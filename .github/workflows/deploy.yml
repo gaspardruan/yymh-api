@@ -34,13 +34,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 21
-          cache: "npm"
-      - name: Install redoc-cli
-        run: npm install -g redoc-cli
+
       - name: Build
         run: |
           mkdir -p dist
-          redoc-cli build-docs YYMH.openapi.json --theme.openapi.disableSearch --theme.openapi.hideLogo -o dist/index.html
+          npx @redocly/cli build-docs YYMH.openapi.json --theme.openapi.disableSearch --theme.openapi.hideLogo -o dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
